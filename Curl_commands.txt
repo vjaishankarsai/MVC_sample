@@ -1,0 +1,11 @@
+Insertion:
+curl -d '{"name":"sai", "address":"vizag"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/insertion
+---------------------------------------------------------------------------------------------------------------------------
+
+Deletion:
+curl -d '{"name":"sai"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/deletion
+---------------------------------------------------------------------------------------------------------------------------
+
+Updation:
+curl -d '{"name":"shankar", "address":"vizag"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/updation
+---------------------------------------------------------------------------------------------------------------------------
