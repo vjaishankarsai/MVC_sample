@@ -6,4 +6,6 @@ def create_app():
 
     #routes mapping
     app.register_blueprint(routes.insertion.bp)
+    app.register_blueprint(routes.updation.bp)
+    app.register_blueprint(routes.deletion.bp)
     return app
