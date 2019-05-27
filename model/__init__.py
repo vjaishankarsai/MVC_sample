@@ -1,2 +1,2 @@
-from . import base
-__all__ = [base]
+from .base import mycol
+__all__ = ["mycol"]
