@@ -1,16 +1,15 @@
-import request
-import response
-from flask import request
-from model.base import FirstSample
+from model import mycol
+from . import Common
 
-fs = FirstSample()
+c=Common.Common()
 
 class DeletionController(object):
     
+    #method to remove the document
     def remove(self, name):
-        del_status = fs.remove(name)
-        if del_status == 0:
-            return "Sorry no such document is present!!!!!!!!!"
+        if(c.find_doc(name)):                                           #search the db for that document using 'name'
+            myquery = { "_id" : name}                                   
+            mycol.delete_one(myquery)                                   #to delete the document
+            return c.show()                                             #to return all the documents in the database
         else:
-            res = fs.show()
-            return res
+            return "Sorry no such document is present!!!!!!!!!"         #If document is not present then return the msg.  
