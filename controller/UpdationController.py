@@ -1,16 +1,16 @@
-import request
-import response
-from flask import request
-from model.base import FirstSample
+from model import mycol
+from . import Common
 
-fs = FirstSample()
+c=Common.Common()
 
 class UpdationController(object):
     
-    def update(self, name, address):
-        del_status = fs.update(name,address)
-        if del_status == 0:
-            return "Unable to Update, the document is not there !!!!!!!!"
+    #method to remove the document
+    def update(self, name, newaddress):
+        if(c.find_doc(name)):                                                 #search the db for that document using 'name'  
+            myquery = { "_id" : name }                                        
+            newvalues = { "$set" : { "address" : newaddress } }
+            mycol.update_one(myquery,newvalues)                               #to update the document
+            return c.show()                                                   #to return all the documents in the database
         else:
-            res = fs.show()
-            return res
+            return "Unable to Update, the document is not there !!!!!!!!"     #If document is not present then return that msg
